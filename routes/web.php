@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
 Route::controller(AdminController::class)->group(function(){
     Route::get('/admin/logout', 'destroy')->name('admin.logout');
     Route::get('/admin/profile', 'profile')->name('admin.profile');
+    Route::get('/admin/edit-profile', 'editProfile')->name('admin.edit_profile');
 });
 
 // ----------------------- End of Admin Route ------------------------

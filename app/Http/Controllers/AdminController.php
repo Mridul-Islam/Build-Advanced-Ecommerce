@@ -22,6 +22,18 @@ class AdminController extends Controller
 
 
 
+    // ------------------ Start of Admin Profile Method -------------------
+    public function editProfile(){
+        $id        = Auth::user()->id;
+        $edit_data = User::find($id);
+
+        return view('admin.admin_profile_edit', compact('edit_data'));
+    }
+    // ------------------ End of Admin Profile Method -------------------
+
+
+
+
     // ------------------ Start of Admin Logout Method ---------------------
     public function destroy(Request $request): RedirectResponse
     {
