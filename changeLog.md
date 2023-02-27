@@ -1,4 +1,9 @@
-<p>20-02-2023 [V1]</p>
+27-02-2023 V[1.0.1]
+Added:
+=> Show Admin Profile Information
+
+
+20-02-2023 V[1.0.0]
 Added:
 => Breeze Authentication System.
 => Customize registration page.
