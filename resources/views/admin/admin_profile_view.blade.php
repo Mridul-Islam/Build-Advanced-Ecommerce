@@ -6,7 +6,7 @@
     <div class="col-lg-6">
         <div class="card">
             <center><br><br>
-                <img class="rounded-circle avatar-xl" src="{{ asset('assets/images/small/img-5.jpg') }}" alt="Card image cap">
+                <img class="rounded-circle avatar-xl" src="{{ $admin_data->profile_image != "" ? asset("images/admin_images/$admin_data->profile_image") : asset('images/no_image.jpg') }}" alt="Card image cap">
             </center>
             <div class="card-body">
                 <h4 class="card-title">Name: {{ $admin_data->name }}</h4>

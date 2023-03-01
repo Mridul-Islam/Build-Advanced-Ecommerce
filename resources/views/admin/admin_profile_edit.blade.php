@@ -12,7 +12,8 @@
 
                 <h4 class="card-title">Edit Profile Page</h4>
 
-                <form action="">
+                <form action="{{ route('admin.store_profile') }}" method="post" enctype="multipart/form-data">
+                    @csrf
 
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Name</label>
@@ -49,7 +50,7 @@
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-10">
-                            <img class="rounded avatar-lg" src="{{ asset('assets/images/small/img-5.jpg') }}" alt="Admin Image" id="showImage">
+                            <img class="rounded avatar-lg" src="{{ $edit_data->profile_image != "" ? asset("images/admin_images/$edit_data->profile_image") : asset('images/no_image.jpg') }}" alt="Admin Image" id="showImage">
                         </div>
                     </div>
                     <!-- end row -->
