@@ -54,7 +54,12 @@ class AdminController extends Controller
         }
         $the_user->save();
 
-        return redirect()->route('admin.profile');
+        $notification = array(
+            'message' => 'Admin Profile Update Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('admin.profile')->with($notification);
     }
     // ------------------ End of Store Admin Profile Edit Method -------------------
 
@@ -70,7 +75,12 @@ class AdminController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        $notification = array(
+            "message" => "User Logout Successfully",
+            'alert-type' => 'success'
+        );
+
+        return redirect('/login')->with($notification);
     }
     // ------------------ End of Admin Logout Method ---------------------
 
