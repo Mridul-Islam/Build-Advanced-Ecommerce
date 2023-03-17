@@ -10,7 +10,7 @@
         <div class="card">
             <div class="card-body">
 
-                <h4 class="card-title">Edit Profile Page</h4>
+                <h4 class="card-title">Edit Profile Page</h4><br><br>
 
                 <form action="{{ route('admin.store_profile') }}" method="post" enctype="multipart/form-data">
                     @csrf

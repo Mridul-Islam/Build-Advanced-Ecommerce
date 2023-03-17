@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 
 class AdminController extends Controller
@@ -85,6 +86,41 @@ class AdminController extends Controller
     // ------------------ End of Admin Logout Method ---------------------
 
 
+
+
+
+    // ----------------- Start of Chnage Password Method ---------------
+    public function changePassword()
+    {
+        return view('admin.admin_change_password');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $user = Auth::user();
+
+        $validate_data = $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required',
+            'confirm_password' => 'required|same:new_password'
+        ]);
+
+        $user_existed_password = $user->password;
+
+        if(Hash::check($request->old_password, $user_existed_password)){
+            $user->update([
+                'password' => Hash::make($request->new_password)
+            ]);
+
+            session()->flash('message', 'Password Updated Successfully');
+            return redirect()->back();
+        }
+        else{
+            session()->flash('message', 'Old Password did not match');
+            return redirect()->back();
+        }
+    }
+    // ----------------- End of Chnage Password Method ---------------
 
 
 
