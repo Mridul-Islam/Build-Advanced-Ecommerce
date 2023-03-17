@@ -34,6 +34,10 @@ Route::middleware('auth')->group(function () {
 Route::controller(AdminController::class)->group(function(){
     Route::get('/admin/logout', 'destroy')->name('admin.logout');
     Route::get('/admin/profile', 'profile')->name('admin.profile');
+    Route::get('/admin/edit-profile', 'editProfile')->name('admin.edit_profile');
+    Route::post('/admin/store-profile', 'storeProfile')->name('admin.store_profile');
+    Route::get('change-password', 'changePassword')->name('change.password');
+    Route::post('/update-password', 'updatePassword')->name('update.password');
 });
 
 // ----------------------- End of Admin Route ------------------------
