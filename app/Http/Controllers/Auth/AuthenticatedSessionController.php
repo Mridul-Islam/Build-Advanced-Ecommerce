@@ -25,16 +25,25 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        try {
+            $request->authenticate();
+            $request->session()->regenerate();
 
-        $request->session()->regenerate();
+            $notification = [
+                'message' => 'User LogIn Successfully',
+                'alert-type' => 'success'
+            ];
 
-        $notification = [
-            'message' => 'User LogIn Successfully',
-            'alert-type' => 'success'
-        ];
+            return redirect()->intended(RouteServiceProvider::HOME)->with($notification);
 
-        return redirect()->intended(RouteServiceProvider::HOME)->with($notification);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            $notification = [
+                'message' => 'Invalid credentials',
+                'alert-type' => 'error'
+            ];
+
+            return redirect()->back()->with($notification);
+        }
     }
 
     /**
