@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Home\AboutController;
+use App\Http\Controllers\Home\HomeSliderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +18,8 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/', function () {
-    return view('front.index');
+Route::controller(HomeController::class)->group(function(){
+    Route::get('/', 'index')->name('front.index');
 });
 
 Route::get('/dashboard', function () {
@@ -30,8 +33,11 @@ Route::middleware('auth')->group(function () {
 });
 
 
+
+
 // ----------------------- Start of Admin Route ------------------------
 Route::middleware('auth')->group(function(){
+
     Route::controller(AdminController::class)->group(function(){
         Route::get('/admin/logout', 'destroy')->name('admin.logout');
         Route::get('/admin/profile', 'profile')->name('admin.profile');
@@ -40,9 +46,23 @@ Route::middleware('auth')->group(function(){
         Route::get('change-password', 'changePassword')->name('change.password');
         Route::post('/update-password', 'updatePassword')->name('update.password');
     });
+
+    // Home slide routes
+    Route::controller(HomeSliderController::class)->group(function(){
+        Route::get('/home/slider', 'homeSlider')->name('home.slide');
+        Route::put('/update/home/slide/{slide}', 'updateHomeSlide')->name('home_slide.update');
+    });
+
+    // About page routes
+    Route::controller(AboutController::class)->group(function(){
+        Route::get('/about/slide', 'aboutPage')->name('about.page');
+    });
 });
 
-
 // ----------------------- End of Admin Route ------------------------
+
+
+
+
 
 require __DIR__.'/auth.php';
