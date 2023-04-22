@@ -56,6 +56,7 @@ Route::middleware('auth')->group(function(){
     // About page routes
     Route::controller(AboutController::class)->group(function(){
         Route::get('/about/slide', 'aboutPage')->name('about.page');
+        Route::put('/about/update/{about}', 'updateAbout')->name('about.update');
     });
 });
 
