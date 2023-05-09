@@ -65,4 +65,20 @@ class AboutController extends Controller
 
 
 
+
+    // -----------------------------------------------------------
+    // Start of Home About Page
+    // -----------------------------------------------------------
+    public function homeAbout()
+    {
+        $about_page = About::first();
+
+        return view('front.about', compact('about_page'));
+    }
+    // -----------------------------------------------------------
+    // End of Home About Page
+    // -----------------------------------------------------------
+
+
+
 }// End of class

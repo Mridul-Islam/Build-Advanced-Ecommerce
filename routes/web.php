@@ -57,6 +57,7 @@ Route::middleware('auth')->group(function(){
     Route::controller(AboutController::class)->group(function(){
         Route::get('/about/slide', 'aboutPage')->name('about.page');
         Route::put('/about/update/{about}', 'updateAbout')->name('about.update');
+        Route::get('/about', 'homeAbout')->name('home.about');
     });
 });
 
