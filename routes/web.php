@@ -58,6 +58,11 @@ Route::middleware('auth')->group(function(){
         Route::get('/about/slide', 'aboutPage')->name('about.page');
         Route::put('/about/update/{about}', 'updateAbout')->name('about.update');
         Route::get('/about', 'homeAbout')->name('home.about');
+
+        Route::get('/about/multi/image', 'aboutMultiImage')->name('about.multi_image');
+        Route::post('/about/store/multi_image', 'storeMultiImage')->name('about.store_multi_image');
+        Route::get('/about/all-multi_image', 'allMultiImage')->name('all.multi_image');
+        Route::get('/about/edit-multi-image/{image}', 'editMultiImage')->name('edit.multi_image');
     });
 });
 

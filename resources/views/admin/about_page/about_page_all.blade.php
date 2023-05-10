@@ -76,19 +76,11 @@
     </div> <!-- end col -->
 </div>
 
+@endsection
 
-<script>
 
-    $(document).ready(function(){
-        $('#image').change(function(e){
-            var reader = new FileReader();
-            reader.onload = function(e){
-                $('#showImage').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(e.target.files['0']);
-        });
-    });
+@section('script')
 
-</script>
+    @include('admin.includes.show_uploaded_image')
 
 @endsection

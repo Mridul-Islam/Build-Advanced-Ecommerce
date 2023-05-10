@@ -91,9 +91,8 @@
         <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 
-        <!-- Responsive examples -->
-        <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+        <!-- Datatable init js -->
+        <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
 
         <script src="{{ asset('assets/js/pages/dashboard.init.js') }}"></script>
 
@@ -104,24 +103,24 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
         <script>
-         @if(Session::has('message'))
-         var type = "{{ Session::get('alert-type','info') }}"
-         switch(type){
-            case 'info':
+            @if(Session::has('message'))
+            var type = "{{ Session::get('alert-type','info') }}"
+            switch(type){
+                case 'info':
             toastr.info(" {{ Session::get('message') }} ");
             break;
 
             case 'success':
-            toastr.success(" {{ Session::get('message') }} ");
+                toastr.success(" {{ Session::get('message') }} ");
             break;
 
             case 'warning':
-            toastr.warning(" {{ Session::get('message') }} ");
-            break;
+                toastr.warning(" {{ Session::get('message') }} ");
+                break;
 
             case 'error':
-            toastr.error(" {{ Session::get('message') }} ");
-            break;
+                toastr.error(" {{ Session::get('message') }} ");
+                break;
          }
          @endif
         </script>
@@ -131,6 +130,9 @@
 
         <!-- init js -->
         <script src="{{ asset('assets/js/pages/form-editor.init.js') }}"></script>
+
+        @yield('script')
+
     </body>
 
 </html>

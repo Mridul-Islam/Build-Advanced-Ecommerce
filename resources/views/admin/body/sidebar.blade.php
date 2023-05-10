@@ -33,7 +33,20 @@
                         <span>About Page Setup</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('about.page') }}">About Page</a></li>
+                        <li>
+                            <a href="{{ route('about.page') }}">About Page</a>
+                        </li>
+                        <!-- End of li -->
+
+                        <li>
+                            <a href="{{ route('about.multi_image') }}">About Multi Image</a>
+                        </li>
+                        <!-- End of li -->
+
+                        <li>
+                            <a href="{{ route('all.multi_image') }}">All Multi Images</a>
+                        </li>
+                        <!-- End of li -->
                     </ul>
                 </li>
 
