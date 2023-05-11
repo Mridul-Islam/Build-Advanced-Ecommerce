@@ -12,13 +12,14 @@
 
                 <h4 class="card-title">Edit Multi Image</h4><br><br>
 
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="{{ route('update.multi_image', $multiImage->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
+                    @method('put')
 
                     <div class="row mb-3">
                         <label for="image" class="col-sm-2 col-form-label">Multi Image</label>
                         <div class="col-sm-10">
-                            <input name="multi_image" class="form-control" type="file" id="image">
+                            <input name="edit_multi_image" class="form-control" type="file" id="image">
                         </div>
                     </div>
                     <!-- end row -->
@@ -26,7 +27,7 @@
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-10">
-                            <img class="rounded avatar-lg" src="{{ $image->multi_image ? asset($image->multi_image) : asset('images/no_image.jpg') }}" alt="Slider Image" id="showImage">
+                            <img class="rounded avatar-lg" src="{{ $multiImage->multi_image ? asset($multiImage->multi_image) : asset('images/no_image.jpg') }}" alt="Slider Image" id="showImage">
                         </div>
                     </div>
                     <!-- end row -->

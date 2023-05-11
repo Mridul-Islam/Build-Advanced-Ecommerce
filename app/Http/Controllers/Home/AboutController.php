@@ -129,11 +129,48 @@ class AboutController extends Controller
 
 
     // Start of Edit multi image
-    public function editMultiImage(MultiImage $image)
+    public function editMultiImage(MultiImage $multiImage)
     {
-        return view('admin.about_page.edit_multi_image', compact('image'));
+        return view('admin.about_page.edit_multi_image', compact('multiImage'));
     }
     // End of edit multi image
+
+
+
+
+    // Start of update Multi Image
+    public function updateMultiImage(MultiImage $multiImage, Request $request)
+    {
+        if($request->file('edit_multi_image'))
+        {
+            $file = $request->file('edit_multi_image');
+            $image = hexdec(uniqid()) . "-". $file->getClientOriginalName();
+
+            // Delete previous image from the folder
+            if($multiImage->multi_image && file_exists(public_path() . $multiImage->multi_image))
+            {
+                unlink($multiImage->multi_image);
+            }
+
+            // Save image to folder
+            Image::make($file)->resize(220, 220)->save('images/home_about/'.$image);
+
+            $save_image_url = 'images/home_about/'.$image;
+
+            // Update image url in database
+            $multiImage->update([
+                'multi_image' => $save_image_url
+            ]);
+        }
+
+        $notification = array(
+            'message' => 'Multi Image Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.multi_image')->with($notification);
+    }
+    // End of update Multi Image
 
 
 
