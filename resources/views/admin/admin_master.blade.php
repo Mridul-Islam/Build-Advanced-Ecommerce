@@ -107,21 +107,21 @@
             var type = "{{ Session::get('alert-type','info') }}"
             switch(type){
                 case 'info':
-            toastr.info(" {{ Session::get('message') }} ");
-            break;
-
-            case 'success':
-                toastr.success(" {{ Session::get('message') }} ");
-            break;
-
-            case 'warning':
-                toastr.warning(" {{ Session::get('message') }} ");
+                toastr.info(" {{ Session::get('message') }} ");
                 break;
 
-            case 'error':
-                toastr.error(" {{ Session::get('message') }} ");
+                case 'success':
+                    toastr.success(" {{ Session::get('message') }} ");
                 break;
-         }
+
+                case 'warning':
+                    toastr.warning(" {{ Session::get('message') }} ");
+                    break;
+
+                case 'error':
+                    toastr.error(" {{ Session::get('message') }} ");
+                    break;
+            }
          @endif
         </script>
 
@@ -130,6 +130,10 @@
 
         <!-- init js -->
         <script src="{{ asset('assets/js/pages/form-editor.init.js') }}"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+        <script src="{{ asset('assets/js/code.js') }}"></script>
 
         @yield('script')
 

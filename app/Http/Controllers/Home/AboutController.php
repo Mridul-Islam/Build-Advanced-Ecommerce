@@ -175,4 +175,28 @@ class AboutController extends Controller
 
 
 
+    // Start of delete multi Image method
+    public function deleteMultiImage(MultiImage $multiImage)
+    {
+        // delete file
+        if($multiImage->multi_image && file_exists(public_path() . $multiImage->multi_image))
+        {
+            unlink($multiImage->multi_image);
+        }
+
+        // Delete data
+        $multiImage->delete();
+
+        $notification = array(
+            'message' => 'Multi Image Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+    // End of delete multi Image method
+
+
+
+
 }// End of class

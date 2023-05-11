@@ -64,6 +64,7 @@ Route::middleware('auth')->group(function(){
         Route::get('/about/all-multi_image', 'allMultiImage')->name('all.multi_image');
         Route::get('/about/edit-multi-image/{multiImage}', 'editMultiImage')->name('edit.multi_image');
         Route::put('/about/update/multi-image/{multiImage}', 'updateMultiImage')->name('update.multi_image');
+        Route::get('/about/delete/multi-image/{multiImage}', 'deleteMultiImage')->name('delete.multi_image');
     });
 });
 
